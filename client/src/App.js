@@ -19,37 +19,27 @@ const styles = theme => ({
   table: {
     minWidth: 640
   }
-})
-
-// props : 상위 컴포넌트에서 하위 컴포넌트로 값을 전달
-const customers = [
-  {
-    'id': 1,
-    'image': 'https://placeimg.com/64/64/1',
-    'name': '홍길동',
-    'birthday': '810522',
-    'gender': '남자',
-    'job': '대학생'
-  },
-  {
-    'id': 2,
-    'image': 'https://placeimg.com/64/64/2',
-    'name': '나길동',
-    'birthday': '910522',
-    'gender': '남자',
-    'job': '교수'
-  },
-  {
-    'id': 3,
-    'image': 'https://placeimg.com/64/64/3',
-    'name': '노길동',
-    'birthday': '200522',
-    'gender': '남자',
-    'job': '대표'
-  }
-]
+});
 
 class App extends Component {
+
+  state = {
+    customers: ""
+  }
+
+  // api 서버로부터 데이터를 받아온다
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({customers: res}))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () => {
+    const response = await fetch('/api/customers');
+    const body = await response.json();
+    return body;
+  }
+
   render() {
     const { classes } = this.props; // style 객체 생성
     return (
@@ -67,7 +57,7 @@ class App extends Component {
           </TableHead>
           <TableBody>
             {
-              customers.map(c => { // map을 사용할때 반드시 key를 설정해야함
+              this.state.customers ? this.state.customers.map(c => { // map을 사용할때 반드시 key를 설정해야함
                 return (
                   <Customer
                     key={c.id}
@@ -78,9 +68,9 @@ class App extends Component {
                     gender={c.gender}
                     job={c.job}
                   />
-                );
-              })
-            }
+                )
+              }) : ""
+            } 
           </TableBody>
         </Table>
       </Paper> 
