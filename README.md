@@ -3,6 +3,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+npm install -g create-react-app
+create-react-app management
+npm install -g yarn
+yarn start
+npm install @material-ui/core
+
 ## Available Scripts
 
 In the project directory, you can run:
