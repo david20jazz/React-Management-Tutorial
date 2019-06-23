@@ -45,13 +45,13 @@ class App extends Component {
 
   state = {
     customers: "",
-    completed: 0
+    completed: 0 // for progress
   }
 
   // api 서버로부터 데이터를 받아온다
   componentDidMount() {
     this.timer = setInterval(this.progress, 20);
-    this.callApi()
+    this.callApi() // 이 부분을 주석처리하면 progress 작동확인 가능
       .then(res => this.setState({customers: res}))
       .catch(err => console.log(err));
   }

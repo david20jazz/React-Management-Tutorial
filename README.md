@@ -3,11 +3,32 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-npm install -g create-react-app
-create-react-app management
-npm install -g yarn
-yarn start
-npm install @material-ui/core
+npm install -g create-react-app<br>
+create-react-app management<br>
+npm install -g yarn<br>
+yarn start<br>
+npm install @material-ui/core<br>
+https://material-ui.com/demos/tables/<br>
+client 폴더 생성 및 이동 후 root에서 server를 위한 npm install -g nodemon<br>
+body-parser 오류시 npm install --save body-parser<br>
+yarn dev<br>
+npm install --save mysql<br>
+
+# DB
+USE DBName;
+
+CREATE TABLE CUSTOMER (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	image VARCHAR(1024),
+	name VARCHAR(64),
+	birthday VARCHAR(64),
+	gender VARCHAR(64),
+	job VARCHAR(64)
+) DEFAULT CHARACTER SET UTF8 COLLATE utf8_general_ci;
+
+INSERT INTO CUSTOMER VALUES (1, 'https://placeimg.com/64/64/1', '홍길동', '810521', '남자', '대학생');
+INSERT INTO CUSTOMER VALUES (2, 'https://placeimg.com/64/64/2', '나길동', '810522', '남자', '교수');
+INSERT INTO CUSTOMER VALUES (3, 'https://placeimg.com/64/64/3', '너길동', '810523', '남자', '대표');
 
 ## Available Scripts
 
